@@ -6,7 +6,7 @@
                 <h1 class="main__text">
                     Unleash the Potential of your Strava Routes by ordering them in Folders!
                 </h1>
-                <a v-bind:href="oAuthUrl" class="strava-button">
+                <a v-bind:href="authUrl" class="strava-button">
                     <img src="/img/strava-logo.svg" alt="Strava logo">
                     Connect with Strava
                 </a>
@@ -14,11 +14,11 @@
         </section>
         <footer class="footer">
             <p class="footer__text">
-                This app allows you to structure your Strava routes in folders. Just add a route to a folder by placing a <i>[Folder Name]</i> in it. For example, the route with the name <i>[North][Long] Coffee Ride</i> is displayed here in the directory <i>/North/Long/Coffee Ride</i>.
+                This app allows you to structure your Strava routes in folders. Just add a route to a folder by placing a <i>[Folder Name]</i> in it's name. For example, the route with the name <i>[North][Long] Coffee Ride</i> is displayed in this app in the directory path <i>/North/Long/Coffee Ride</i>.
             </p>
             <a href="https://github.com/jannisrohden/strava-route-organize-frontend" target="_blank" class="footer__github">
                 <img src="/img/github.png" alt="View this project on GitHub">
-                <span>View this projet on GitHub</span>
+                <span>View this project on GitHub</span>
             </a>
         </footer>
     </div>
@@ -32,17 +32,8 @@ export default {
     components: {
         Header
     },
-    data () {
-        return {
-            oAuthUrl: 'xxx'
-        }
-    },
-    created () {
-        fetch('https://routes-backend.jnns.dev/api/auth/url')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-            })
+    props: {
+        authUrl: String
     }
 }
 </script>
